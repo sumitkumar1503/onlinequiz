@@ -1,0 +1,85 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+
+
+<div class="jumbotron my-4">
+
+  <form class="form" onsubmit="return saveAns()"  action="/student/calculate-marks" method="POST">
+    {% csrf_token %}
+    <h1 style="text-align: center;">{{course.course_name}}</h1>
+    {% for q in questions%}
+    <h3 class="text-info">{{ forloop.counter }}. {{q.question}}</h3>
+    
+        <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
+        
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1">
+            <label class="form-check-label" for="option1">
+              {{q.option1}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2">
+            <label class="form-check-label" for="option2">
+              {{q.option2}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3">
+            <label class="form-check-label" for="option3">
+              {{q.option3}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4">
+            <label class="form-check-label" for="option4">
+              {{q.option4}}
+            </label>
+          </div>
+
+        {% endfor %}
+        <input class="btn btn-info btn-lg"   type="submit" value="Submit">  
+    </form>
+  </div>
+
+<script> 
+    function saveAns(){  
+
+        var ele = document.getElementsByTagName('input'); 
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].type="radio") { 
+                if(ele[i].checked){        
+                  setCookie(ele[i].name,ele[i].value,3)
+                }
+            } 
+        } 
+          
+    }
+    
+    function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+</script> 
+
+<br><br><br><br><br><br>
+{% endblock content %}

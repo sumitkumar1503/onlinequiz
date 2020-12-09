@@ -1,0 +1,38 @@
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  a:link {
+        text-decoration: none;
+      }
+    
+  </style>
+</head>
+<h2 style="text-align:center; color:blue;">ADD COURSE</h2>
+<form method="POST" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+      <label for="course_name">Course Name</label>
+      {% render_field courseForm.course_name class="form-control" placeholder="Java" %}
+
+      <label for="question_number">Total Question</label>
+      {% render_field courseForm.question_number class="form-control" placeholder="10" %}
+
+      <label for="total_marks">Total Marks</label>
+      {% render_field courseForm.total_marks class="form-control" placeholder="50" %}
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">ADD</button>
+  </form>
+<br><br><br>
+{% endblock content %}

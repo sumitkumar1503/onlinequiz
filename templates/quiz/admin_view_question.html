@@ -1,0 +1,55 @@
+{% extends 'quiz/adminbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<br><br>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Select Course To View Questions</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Course Name</th>
+          <th>Total Question</th>
+          <th>Total Marks</th>
+          <th>View Question</th>
+        </tr>
+      </thead>
+      {% for c in courses %}
+      <tr>
+
+        <td> {{c.course_name}}</td>
+        <td>{{c.question_number}}</td>
+        <td>{{c.total_marks}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'view-question' c.id  %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}
