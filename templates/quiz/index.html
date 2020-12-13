@@ -2,7 +2,11 @@
 {% load static %}
 <html lang="en" dir="ltr">
 
-
+<style>
+  .jumbotron{
+    margin-bottom: 0px;
+  }
+</style>
 <body>
   {% include "quiz/navbar.html" %}
 <br>
@@ -17,8 +21,8 @@
     <p class="lead">Sign up if you haven't already and get access to millions of quizzes on the topic of your interest.</p>
     <p><strong> Start Your Journey Here:</strong></p>
     <a href="/student/studentsignup" class="btn btn-lg btn-info" style="padding-right: 35px;"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a>
-
     
+    <br><br><br>
   </div>  
 </section>
   {% include "quiz/footer.html" %}

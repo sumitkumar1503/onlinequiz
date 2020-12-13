@@ -37,7 +37,7 @@
 <br><br>
 <h3 style="text-align:center;">UPDATE STUDENT</h3>
 <div>
-  <form method="post"  enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+  <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
         <label for="first_name">First Name</label>
         {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
