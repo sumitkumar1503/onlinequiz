@@ -15,35 +15,39 @@
 ---
 ## Functions
 ### Admin
-- Signup their account. Then Login (No approval Required).
-- Can register/view/approve/reject/delete doctor (approve those doctor who applied for job in their hospital).
-- Can admit/view/approve/reject/discharge patient (discharge patient when treatment is done).
-- Can Generate/Download Invoice pdf (Generate Invoice according to medicine cost, room charge, doctor charge and other charge).
-- Can view/book/approve Appointment (approve those appointments which is requested by patient).
+- Create Admin account using command
+```
+py manage.py createsuperuser
+```
+- After Login, can see Total Number Of Student, Teacher, Course, Questions are there in system on Dashboard.
+- Can View, Update, Delete, Approve Teacher.
+- Can View, Update, Delete Student.
+- Can Also See Student Marks.
+- Can Add, View, Delete Course/Exams.
+- Can Add Questions To Respective Courses With Options, Correct Answer, And Marks.
+- Can View And Delete Questions Too.
 
-### Doctor
-- Apply for job in hospital. Then Login (Approval required by hospital admin, Then only doctor can login).
-- Can only view their patient details (symptoms, name, mobile ) assigned to that doctor by admin.
-- Can view their discharged(by admin) patient list.
-- Can view their Appointments, booked by admin.
-- Can delete their Appointment, when doctor attended their appointment.
+### Teacher
+- Apply for job in System. Then Login (Approval required by system admin, Then only teacher can login).
+- After Login, can see Total Number Of Student, Course, Questions are there in system on Dashboard.
+- Can Add, View, Delete Course/Exams.
+- Can Add Questions To Respective Courses With Options, Correct Answer, And Marks.
+- Can View And Delete Questions Too.
+> **_NOTE:_**  Basically Admin Will Hire Teachers To Manage Courses and Questions.
 
-### Patient
-- Create account for admit in hospital. Then Login (Approval required by hospital admin, Then only patient can login).
-- Can view assigned doctor's details like ( specialization, mobile, address).
-- Can view their booked appointment status (pending/confirmed by admin).
-- Can book appointments.(approval required by admin)
-- Can view/download Invoice pdf (Only when that patient is discharged by admin).
-
+### Student
+- Create account (No Approval Required By Admin, Can Login After Signup)
+- After Login, Can See How Many Courses/Exam And Questions Are There In System On Dashboard.
+- Can Give Exam Any Time, There Is No Limit On Number Of Attempt.
+- Can View Marks Of Each Attempt Of Each Exam.
+- Question Pattern Is MCQ With 4 Options And 1 Correct Answer.
 ---
 
 ## HOW TO RUN THIS PROJECT
 - Install Python(3.7.6) (Dont Forget to Tick Add to Path while installing Python)
 - Open Terminal and Execute Following Commands :
 ```
-pip install django==3.0.5
-pip install django-widget-tweaks
-pip install xhtml2pdf
+python -m pip install -r requirements. txt
 ```
 - Download This Project Zip Folder and Extract it
 - Move to project folder in Terminal. Then run following Commands :
@@ -66,9 +70,7 @@ EMAIL_RECEIVING_USER = 'youremail@gmail.com'
 ```
 
 ## Drawbacks/LoopHoles
-- Any one can be Admin. There is no Approval required for admin account. So you can disable admin signup process and use any logic like creating superuser.
-- There should be at least one doctor in hospital before admitting patient. So first add doctor.
-- On update page of doctor/patient you must have to update password.
+- Admin/Teacher can add any number of questions to any course, But while adding course, admin provide question number.
 
 
 ## Feedback
